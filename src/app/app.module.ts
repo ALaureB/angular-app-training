@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { DeviceComponent } from './device/device.component';
+import { DeviceService } from './services/device.service';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,9 @@ import { DeviceComponent } from './device/device.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [
+    DeviceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

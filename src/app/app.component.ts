@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
-import { resolve } from 'url';
+import { Component, OnInit } from '@angular/core';
+import { DeviceService } from './services/device.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   isAuth = false;
+  devices: any[];
+
   lastUpdate = new Promise((resolve, reject) => {
     const date = new Date();
     setTimeout(
@@ -17,30 +19,7 @@ export class AppComponent {
     );
   });
 
-  devices = [
-    {
-      name: 'fridge',
-      status: 'on'
-    },
-    {
-      name: 'oven',
-      status: 'off'
-    },
-    {
-      name: 'kettle',
-      status: 'off'
-    },
-    {
-      name: 'computer',
-      status: 'on'
-    },
-    {
-      name: 'television',
-      status: 'on'
-    }
-  ];
-
-  constructor() {
+  constructor(private deviceService: DeviceService) {
     setTimeout(
       () => {
         this.isAuth = true;
@@ -48,7 +27,19 @@ export class AppComponent {
     );
   }
 
+  ngOnInit() {
+    this.devices = this.deviceService.devices;
+  }
+
   onOn() {
-    alert('All devices are on');
+    this.deviceService.switchOnAll();
+  }
+
+  onOff() {
+    if (confirm('Do you want to switch off all devices ?')) {
+      this.deviceService.switchOffAll();
+    } else {
+      return null;
+    }
   }
 }
