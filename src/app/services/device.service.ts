@@ -33,4 +33,13 @@ export class DeviceService {
           device.status = 'off';
         }
     }
+
+    switchOnOne(i: number) {
+        this.devices[i].status = 'on';
+    }
+
+    switchOffOne(i: number) {
+        this.devices[i].status = 'off';
+    }
+
 }

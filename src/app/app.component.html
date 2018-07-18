@@ -4,7 +4,7 @@
       <h2 class="text-center mb-4">Devices manager</h2>
         <p>Last update : {{ lastUpdate | async | date: 'short' }}</p>
       <ul class="list-group">
-          <app-device *ngFor="let device of devices" [deviceName]="device.name" [deviceStatus]="device.status"></app-device>
+          <app-device *ngFor="let device of devices; let i=index" [deviceName]="device.name" [deviceStatus]="device.status" [index]="i"></app-device>
         </ul>
         <div class="row">
           <div class="col-lg-12 text-center">
