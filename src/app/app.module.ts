@@ -6,6 +6,13 @@ import { DeviceComponent } from './device/device.component';
 import { DeviceService } from './services/device.service';
 import { AuthComponent } from './auth/auth.component';
 import { DevicesViewComponent } from './devices-view/devices-view.component';
+import { Routes, RouterModule } from '@angular/router';
+
+const appRoutes: Routes = [
+  { path: 'devices', component: DevicesViewComponent },
+  { path: 'auth', component: AuthComponent },
+  { path: '', component: DevicesViewComponent }
+];
 
 @NgModule({
   declarations: [
@@ -15,7 +22,8 @@ import { DevicesViewComponent } from './devices-view/devices-view.component';
     DevicesViewComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [
     DeviceService
