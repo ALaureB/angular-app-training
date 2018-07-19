@@ -2,16 +2,15 @@
   <div class="row">
     <div class="col-lg-12">
       <h2 class="text-center mb-4">Devices manager</h2>
-        <p>Last update : {{ lastUpdate | async | date: 'short' }}</p>
-      <ul class="list-group">
-          <app-device *ngFor="let device of devices; let i=index" [deviceName]="device.name" [deviceStatus]="device.status" [index]="i"></app-device>
-        </ul>
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <button class="mt-2 btn btn-success" [disabled]="!isAuth" (click)="onOn()">Turn all devices on</button>
-            <button class="mt-2 ml-2 btn btn-danger" [disabled]="!isAuth" (click)="onOff()">Turn all devices off</button>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" href="#">Authentification</a>
+            <a class="nav-item nav-link active" href="#">Devices</a>
           </div>
         </div>
+      </nav>
+      <app-devices-view></app-devices-view>
     </div>
   </div>
 </div>
