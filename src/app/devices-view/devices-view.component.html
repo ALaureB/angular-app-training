@@ -1,6 +1,6 @@
 <p>Last update : {{ lastUpdate | async | date: 'short' }}</p>
 <ul class="list-group">
-  <app-device *ngFor="let device of devices; let i=index" [deviceName]="device.name" [deviceStatus]="device.status" [index]="i"></app-device>
+  <app-device *ngFor="let device of devices; let i=index" [deviceName]="device.name" [deviceStatus]="device.status" [index]="i" [id]="device.id"></app-device>
 </ul>
 <div class="row">
   <div class="col-lg-12 text-center">

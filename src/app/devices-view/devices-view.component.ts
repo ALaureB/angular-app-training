@@ -8,6 +8,7 @@ import { DeviceService } from '../services/device.service';
 })
 export class DevicesViewComponent implements OnInit {
   devices: any[];
+
   lastUpdate = new Promise((resolve, reject) => {
     const date = new Date();
     setTimeout(
@@ -18,7 +19,7 @@ export class DevicesViewComponent implements OnInit {
   });
   isAuth = false;
 
-  constructor(private deviceService: DeviceService) { 
+  constructor(private deviceService: DeviceService) {
     setTimeout(
       () => {
         this.isAuth = true;

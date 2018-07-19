@@ -7,9 +7,12 @@ import { DeviceService } from './services/device.service';
 import { AuthComponent } from './auth/auth.component';
 import { DevicesViewComponent } from './devices-view/devices-view.component';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthService } from './services/auth.service';
+import { SingleDeviceViewComponent } from './single-device-view/single-device-view.component';
 
 const appRoutes: Routes = [
   { path: 'devices', component: DevicesViewComponent },
+  { path: 'devices/:id', component: SingleDeviceViewComponent  },
   { path: 'auth', component: AuthComponent },
   { path: '', component: DevicesViewComponent }
 ];
@@ -19,14 +22,16 @@ const appRoutes: Routes = [
     AppComponent,
     DeviceComponent,
     AuthComponent,
-    DevicesViewComponent
+    DevicesViewComponent,
+    SingleDeviceViewComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    DeviceService
+    DeviceService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
