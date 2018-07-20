@@ -9,12 +9,15 @@ import { DevicesViewComponent } from './devices-view/devices-view.component';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthService } from './services/auth.service';
 import { SingleDeviceViewComponent } from './single-device-view/single-device-view.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const appRoutes: Routes = [
   { path: 'devices', component: DevicesViewComponent },
   { path: 'devices/:id', component: SingleDeviceViewComponent  },
   { path: 'auth', component: AuthComponent },
-  { path: '', component: DevicesViewComponent }
+  { path: '', component: DevicesViewComponent },
+  { path: 'not-found', component: NotFoundComponent },
+  { path: '**', redirectTo: 'not-found' }
 ];
 
 @NgModule({
@@ -23,7 +26,8 @@ const appRoutes: Routes = [
     DeviceComponent,
     AuthComponent,
     DevicesViewComponent,
-    SingleDeviceViewComponent
+    SingleDeviceViewComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
