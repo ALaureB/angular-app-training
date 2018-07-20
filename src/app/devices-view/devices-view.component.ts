@@ -17,15 +17,8 @@ export class DevicesViewComponent implements OnInit {
       }, 2000
     );
   });
-  isAuth = false;
 
-  constructor(private deviceService: DeviceService) {
-    setTimeout(
-      () => {
-        this.isAuth = true;
-      }, 4000
-    );
-  }
+  constructor(private deviceService: DeviceService) { }
 
   ngOnInit() {
     this.devices = this.deviceService.devices;
