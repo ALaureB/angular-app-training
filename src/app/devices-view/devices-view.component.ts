@@ -43,6 +43,10 @@ export class DevicesViewComponent implements OnInit, OnDestroy {
     }
   }
 
+  onFetch() {
+    this.deviceService.getDevicesFromServer();
+  }
+
   onSave() {
     this.deviceService.saveDevicesToServer();
   }

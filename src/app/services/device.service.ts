@@ -6,36 +6,23 @@ import { HttpClient } from '@angular/common/http';
 export class DeviceService {
 
   devicesSubject = new Subject<any[]>();
-
-  private devices = [
-    {
-      id: 1,
-      name: 'fridge',
-      status: 'on'
-    },
-    {
-      id: 2,
-      name: 'oven',
-      status: 'off'
-    },
-    {
-      id: 3,
-      name: 'kettle',
-      status: 'off'
-    },
-    {
-      id: 4,
-      name: 'computer',
-      status: 'on'
-    },
-    {
-      id: 5,
-      name: 'television',
-      status: 'on'
-    }
-  ];
+  private devices = [];
 
   constructor(private httpClient: HttpClient) {}
+
+  getDevicesFromServer() {
+    this.httpClient
+      .get<any[]>('https://angular-training-e6cf1.firebaseio.com/devices.json')
+      .subscribe(
+        (response) => {
+          this.devices = response;
+          this.emitDeviceSubject();
+        },
+        (error) => {
+          console.log('Erreur ! : ' + error);
+        }
+      );
+  }
 
   saveDevicesToServer() {
     this.httpClient
