@@ -1,5 +1,8 @@
 import { Subject } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
+@Injectable()
 export class DeviceService {
 
   devicesSubject = new Subject<any[]>();
@@ -31,6 +34,21 @@ export class DeviceService {
       status: 'on'
     }
   ];
+
+  constructor(private httpClient: HttpClient) {}
+
+  saveDevicesToServer() {
+    this.httpClient
+      .put('https://angular-training-e6cf1.firebaseio.com/devices.json', this.devices)
+      .subscribe(
+        () => {
+          console.log('Saving over !');
+        },
+        (error) => {
+          console.log('Error ! : ' + error);
+        }
+      );
+  }
 
   emitDeviceSubject() {
     this.devicesSubject.next(this.devices.slice());

@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { AppComponent } from './app.component';
 import { DeviceComponent } from './device/device.component';
 import { DeviceService } from './services/device.service';
@@ -16,6 +15,7 @@ import { EditDeviceComponent } from './edit-device/edit-device.component';
 import { UserListComponentComponent } from './user-list-component/user-list-component.component';
 import { UserService } from './services/user.service';
 import { NewUserComponent } from './new-user/new-user.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes: Routes = [
   { path: 'devices', canActivate: [AuthGuard], component: DevicesViewComponent },
@@ -45,7 +45,8 @@ const appRoutes: Routes = [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     DeviceService,

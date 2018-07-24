@@ -43,6 +43,10 @@ export class DevicesViewComponent implements OnInit, OnDestroy {
     }
   }
 
+  onSave() {
+    this.deviceService.saveDevicesToServer();
+  }
+
   ngOnDestroy() {
     this.deviceSubscription.unsubscribe();
   }
